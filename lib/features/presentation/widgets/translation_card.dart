@@ -21,7 +21,7 @@ class TranslationCard extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
       decoration: BoxDecoration(
         color: Colors.grey[50],
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(20.r),
         border: Border.all(color: Colors.grey.shade300),
       ),
       child: Column(
@@ -39,10 +39,10 @@ class TranslationCard extends StatelessWidget {
               ),
               IconButton(
                 onPressed: () {
-                  text.clear(); 
+                  text.clear();
                 },
-                icon: Icon(Icons.close,),
-                padding: EdgeInsets.zero, 
+                icon: Icon(Icons.close),
+                padding: EdgeInsets.zero,
               ),
             ],
           ),
@@ -63,7 +63,7 @@ class TranslationCard extends StatelessWidget {
               Container(
                 padding: EdgeInsets.all(8.w),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50),
+                  borderRadius: BorderRadius.circular(50.r),
                   color: Color(0xFF003366),
                 ),
                 child: Icon(Icons.mic, size: 28, color: Colors.white),
@@ -77,16 +77,16 @@ class TranslationCard extends StatelessWidget {
                     vertical: 10.h,
                   ),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
+                    borderRadius: BorderRadius.circular(30.r),
                   ),
                 ),
                 child: isLoading
                     ? SizedBox(
-                        width: 20,
-                        height: 20,
+                        width: 20.w,
+                        height: 20.h,
                         child: CircularProgressIndicator(
                           color: Colors.white,
-                          strokeWidth: 2,
+                          strokeWidth: 2.w,
                         ),
                       )
                     : Text("Translate", style: TextStyle(color: Colors.white)),

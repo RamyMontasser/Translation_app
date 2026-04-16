@@ -14,31 +14,13 @@ class CustomSliverAppbar extends StatelessWidget {
     onPressed: () => Navigator.pop(context),
   ): null,
       pinned: pinned?? false, 
-      // floating: pinned == true? false: true, 
-      // snap: pinned == true ? false : true, 
       surfaceTintColor: Colors.white,
       expandedHeight: 50.h,
       foregroundColor: Colors.white,
-      // centerTitle: true,
       
       title: Text(title),
       
       backgroundColor: Color(0xFF003366),
-      // flexibleSpace: FlexibleSpaceBar(
-      //   background: Container(
-      //     decoration: BoxDecoration(
-      //       gradient: LinearGradient(
-      //         begin: Alignment.topRight,
-      //         end: Alignment.bottomLeft,
-      //         colors: [
-      //           AppColors.redGradianDark,
-      //           AppColors.blueNormal,
-      //           AppColors.blueNormal,
-      //         ],
-      //       ),
-      //     ),
-      //   ),
-      // ),
     );
   }
 }

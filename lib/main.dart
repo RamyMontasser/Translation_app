@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:translation_app/core/service/get_it.dart';
+import 'package:translation_app/core/service/storage_service.dart';
 import 'package:translation_app/features/presentation/screens/main_page.dart';
 import 'package:translation_app/features/presentation/screens/splash_screen.dart';
 
-void main() {
+void main() async {
   getItSetup();
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await StorageService.init();
   runApp(const MyApp());
 }
 

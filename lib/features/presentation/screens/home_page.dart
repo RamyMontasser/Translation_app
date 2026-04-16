@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:translation_app/core/service/get_it.dart';
+import 'package:translation_app/core/service/storage_service.dart';
 import 'package:translation_app/features/data/models/language_model.dart';
+import 'package:translation_app/features/data/models/translation_item.dart';
 import 'package:translation_app/features/domain/repo/transation_repo.dart';
 import 'package:translation_app/features/presentation/widgets/language_selector.dart';
 import 'package:translation_app/features/presentation/widgets/my_custom_scrollview.dart';
@@ -31,6 +33,20 @@ class _HomePageState extends State<HomePage> {
   String translatedText = "";
   bool isLoading = false;
   bool isTranslated = false;
+  bool isFavourite = false;
+
+  @override
+  void initState() {
+    super.initState();
+    text.addListener(() {
+      if (text.text.isEmpty && isTranslated) {
+        setState(() {
+          isTranslated = false;
+        });
+      }
+    });
+    
+  }
 
   void translate() async {
     if (text.text.isEmpty) return;
@@ -57,6 +73,14 @@ class _HomePageState extends State<HomePage> {
           isTranslated = true;
           isLoading = false;
           // debugPrint('translation is $s');
+          StorageService.saveToHistory(
+            TranslationItem(
+              sourceText: text.text,
+              translatedText: s,
+              sourceLangCode: sourceLang.code,
+              targetLangCode: targetLang.code,
+            ),
+          );
         },
       );
     });
@@ -107,9 +131,14 @@ class _HomePageState extends State<HomePage> {
               translate: translate,
             ),
 
-            if (isTranslated && !isLoading) ...[
+            if (isTranslated && !isLoading && text.text.isNotEmpty) ...[
               SizedBox(height: 20),
-              ResultCard(language: targetLang.name, translatedText: translatedText),
+              ResultCard(language: targetLang.name, translatedText: translatedText, isFavourite: isFavourite, onToggle: ()async{
+                          await StorageService.toggleFavorite(0);
+                          setState(() {
+                            isFavourite = !isFavourite;
+                          });
+                        },),
             ],
           ],
         ),

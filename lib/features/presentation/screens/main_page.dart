@@ -23,6 +23,16 @@ class _MainPageState extends State<MainPage> {
     HistoryPage(),
     FavouritePage(),
   ];
+
+  Widget menuItem(IconData icon, String title,) {
+    return ListTile(
+      leading: Icon(icon, color: Colors.black),
+      title: Text(
+        title,
+        style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w500),
+      ),
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,28 +42,36 @@ class _MainPageState extends State<MainPage> {
               backgroundColor: Colors.white,
               child: ListView(
                 children: [
-                  DrawerHeader(child: Text("Translate on the go")),
-                  ListTile(
-                    leading: Icon(Icons.share),
-                    title: Text("Share App"),
-                  ),
+                  DrawerHeader(
+                    child: Column(
+                    children: [
+                      Image.asset('assets/translate.png'),
+                        SizedBox(height: 10.h),
+                        Text(
+                          "Translate on the Go",
+                          style: TextStyle(
+                            fontSize: 20.sp,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+                     ],
+                  )),
+                   
+                  menuItem(Icons.share, "Share App", ),
+                  menuItem(Icons.star, "Rate Us",),
+                  menuItem(Icons.privacy_tip, "Privacy Policy",),
+                  menuItem(Icons.feedback, "Feedback",),
                 ],
               ),
             )
           : null,
-
-      // appBar: AppBar(
-      //   foregroundColor: Colors.white,
-      //   backgroundColor: Color(0xFF003366),
-      //   title: Text("Language Translator"),
-      // ),
       body: IndexedStack(index: _selectedIndex, children: _screens),
 
-      bottomNavigationBar: _buildCustomBottomNav(),
+      bottomNavigationBar: customBottomNav(),
     );
   }
 
-  Widget _buildCustomBottomNav() {
+  Widget customBottomNav() {
     return BottomAppBar(
       color: Colors.grey[200],
       child: Row(

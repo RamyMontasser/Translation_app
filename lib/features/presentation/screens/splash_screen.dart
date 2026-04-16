@@ -106,52 +106,6 @@ class _SplashScreenState extends State<SplashScreen> {
         ),
       ),
     );
-    // Scaffold(
-    //   backgroundColor: Colors.white,
-    //   body: Center(
-    //     child: TweenAnimationBuilder<double>(
-    //       tween: Tween<double>(
-    //         begin: 0.0,
-    //         end: 1.0,
-    //       ),
-    //       duration: const Duration(seconds: 10), 
-    //       builder: (context, opacity, child) {
-    //         return Opacity(opacity: opacity, child: child);
-    //       },
-    //       child: Column(
-    //         // mainAxisAlignment: MainAxisAlignment.center,
-    //         children: [
-    //           Transform.translate(
-    //             offset: Offset(-80, -100),
-    //             child: Container(
-    //               height: 700.h,
-    //               decoration: BoxDecoration(
-    //                 color: Colors.blueAccent,
-    //                 shape: BoxShape.circle,
-    //                 // borderRadius: BorderRadius.only(
-    //                 //   bottomLeft: Radius.circular(100),
-    //                 //   bottomRight: Radius.circular(100),
-    //                 // ),
-    //               ),
-    //             ),),
-    //           Image.asset(
-    //             'assets/translate.png',
-    //             // height: 120.w,
-    //             // width: 120.w,
-    //           ),
-    //           SizedBox(height: 25.h),
-    //           Text(
-    //             "TRANSLATE ON THE GO",
-    //             style: TextStyle(
-    //               fontSize: 22.sp,
-    //               fontWeight: FontWeight.bold,
-    //               color: Colors.black,
-    //             ),
-    //           ),
-    //         ],
-    //       ),
-    //     ),
-    //   ),
-    // );
+   
   }
 }

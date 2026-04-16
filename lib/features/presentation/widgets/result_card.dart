@@ -4,11 +4,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class ResultCard extends StatelessWidget {
   final String language;
   final String translatedText;
+  final bool isFavourite;
+  final VoidCallback onToggle;
 
   const ResultCard({
     super.key,
     required this.language,
     required this.translatedText,
+    required this.isFavourite,
+    required this.onToggle,
   });
 
   @override
@@ -40,10 +44,7 @@ class ResultCard extends StatelessWidget {
           ),
           SizedBox(height: 10.h),
           Expanded(
-            child: Text(
-              translatedText,
-              style: TextStyle(fontSize: 16.sp, ),
-            ),
+            child: Text(translatedText, style: TextStyle(fontSize: 16.sp)),
           ),
           SizedBox(height: 20.h),
           Row(
@@ -53,7 +54,13 @@ class ResultCard extends StatelessWidget {
               SizedBox(width: 20.w),
               Icon(Icons.share, color: Color(0xFF003366)),
               SizedBox(width: 20.w),
-              Icon(Icons.star_border, color: Color(0xFF003366)),
+              InkWell(
+                onTap: onToggle,
+                child: Icon(
+                  isFavourite ? Icons.star : Icons.star_border,
+                  color: Colors.blueGrey,
+                ),
+              ),
             ],
           ),
         ],
